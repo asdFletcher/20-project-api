@@ -1,13 +1,14 @@
 {
-  "name": "server",
+  "name": "api-server-solution",
   "version": "1.0.0",
   "description": "",
-  "main": "./auth-server/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./auth-server/index.js",
-    "watch": "nodemon ./auth-server/index.js",
-    "test-watch": "jest --watchAll",
-    "test": "jest"
+    "start": "node index.js",
+    "lint": "eslint **/*.js",
+    "jsdoc": "jsdoc -c ./docs/config/jsdoc.config.json",
+    "test": "jest --verbose",
+    "test-watch": "jest --watchAll --verbose"
   },
   "jest": {
     "testEnvironment": "node"
@@ -16,19 +17,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.2",
-    "cors": "^2.8.4",
-    "debug": "^4.1.0",
-    "dotenv": "^6.1.0",
-    "express": "^4.16.3",
+    "bcrypt": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
     "jest": "^23.6.0",
     "jsonwebtoken": "^8.4.0",
-    "mongodb-memory-server": "^2.7.3",
-    "mongoose": "^5.3.13",
-    "mongoose-schema-jsonschema": "^1.1.15",
-    "morgan": "^1.9.0",
+    "mongodb-memory-server": "^2.9.1",
+    "mongoose": "^5.4.2",
+    "mongoose-schema-jsonschema": "^1.2.1",
+    "morgan": "^1.9.1",
     "require-directory": "^2.1.1",
     "supertest": "^3.3.0",
-    "swagger-ui-express": "^4.0.2"
+    "swagger-ui-express": "^4.0.2",
+    "uuid": "^3.3.2"
   }
 }

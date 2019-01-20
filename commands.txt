@@ -1,22 +1,72 @@
+~~~ create user roles in the db
+echo '{"role":"user",       "capabilities":["read"]}' | http post :3000/roles
+echo '{"role":"editor",     "capabilities":["create","read","update"]}' | http post :3000/roles
+echo '{"role":"admin",      "capabilities":["create","read","update", "delete"]}' | http post :3000/roles
 
-~~~ new user
+~~~ new users with various roles
 echo '{"username":"john", "password":"johnny"}' | http post :3000/signup
+echo '{"username":"Bob", "password":"bobby", "role":"editor"}' | http post :3000/signup
+echo '{"username":"admin", "password":"admin", "role":"admin"}' | http post :3000/signup
 
-~~~ signin , bearer auth
+~~~ signin for various users
 http post :3000/signin -a john:johnny
+http post :3000/signin -a Bob:bobby
+http post :3000/signin -a admin:admin
 
-http post :3000/signin "Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjM2ZlZWE1ODQ2N2ZmMmY5OGU5Yjk3ZiIsInJvbGUiOiJ1c2VyIiwidHlwZSI6InVzZXIiLCJpYXQiOjE1NDc2OTgzNjV9.ljQ818X7mh9fTbFQXvhA9fWRkK5OBINvCCIHZji9I-A"
+~~~ bearer auth signin test
+http post :3000/signin "Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNDQzNGEyYzM3MjdhOWFkNTJiNDYxNCIsInR5cGUiOiJ1c2VyIiwiaWF0IjoxNTQ3OTczODY4LCJleHAiOjE1NDc5NzQxNjh9.UwkNJ0fnpis-vJahx56_bZDMa2LVDcQFdZ1dJBeKcc4"
+
+POST requests:
+echo '{"name":"Red Sox"}' | http post :3000/api/v1/teams -a Bob:bobby
+echo '{"name":"Yankees"}' | http post :3000/api/v1/teams -a Bob:bobby
+echo '{"name":"Mariners"}' | http post :3000/api/v1/teams -a Bob:bobby
+
+echo '{"bats":"R","name":"Joe Dimaggio","position":"C","team":"Red Sox","throws":"R"}' | http post :3000/api/v1/players -a john:johnny
+echo '{"bats":"L","name":"Ichiro Suzuki","position":"1B","team":"Mariners","throws":"R"}' | http post :3000/api/v1/players -a Bob:bobby
+echo '{"bats":"L","name":"Babe Ruth","position":"P","team":"Yankees","throws":"R"}' | http post :3000/api/v1/players -a admin:admin
+echo '{"bats":"R","name":"Cy Young","position":"2B","team":"Giants","throws":"R"}' | http post :3000/api/v1/players
+
+GET requests
+http :3000/api/v1/players
+http :3000/api/v1/teams
+
+DELETE requests:
+http delete :3000/api/v1/players/5c443c10d18de39d6fefad8f -a admin:admin
+http delete :3000/api/v1/players/5c443c0cd18de39d6fefad8e -a john:johnny
+http delete :3000/api/v1/players/5c443c0cd18de39d6fefad8e -a Bob:bobby
 
 
+
+
+
+Mongo cheatsheet:
+https://github.com/codefellows/seattle-javascript-401d28/blob/master/reference/mongo-cheatsheet.md
+
+
+Heroku style:
 https://fl-18-auth.herokuapp.com/signup
-
 echo '{"username":"diddy","password":"kong"}' | http post https://fl-18-auth.herokuapp.com/signup
 
 
-echo '{"role":"user",       "capability":["read"]}' | http post :3000/config
-echo '{"role":"editor",     "capability":["create","read","update"]}' | http post :3000/config
-echo '{"role":"admin",      "capability":["create","read","update", "delete"]}' | http post :3000/config
 
 
-echo '{"role":"superuser",  "capability":["create","read","update", "delete"]}' | http post :3000/config
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+************************************************************************************
+
+
+Database setup:
+
+.env file:
+MONGODB_URI=mongodb://localhost:27017/baseball
+PORT=3000	
+SECRET=asifjeldjnkmaijrgdfnklm4tse5ydse5yst4	
+
+1. Run all the above use role post requests
+2. Run all the above team and player post requests with the editor or admin "-a username:password"
+3. test CRUD routes with various users to verify auth and CRUD functionality
+
+
+
+************************************************************************************
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
