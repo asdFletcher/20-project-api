@@ -4,8 +4,9 @@ const User = require('./users-model.js');
 
 module.exports = (capability) => {
   
+  
   return (req, res, next) => {
-
+    console.log(`user needs to have the following: ${capability}`);
     try {
       let [authType, authString] = req.headers.authorization.split(/\s+/);
 
@@ -41,6 +42,7 @@ module.exports = (capability) => {
     }
 
     function _authenticate(user) {
+      console.log(`user needs: ${capability}`);
       if ( user && (!capability || (user.can(capability))) ) {
         req.user = user;
         req.token = user.generateToken();
