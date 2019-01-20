@@ -1,0 +1,22 @@
+
+~~~ new user
+echo '{"username":"john", "password":"johnny"}' | http post :3000/signup
+
+~~~ signin , bearer auth
+http post :3000/signin -a john:johnny
+
+http post :3000/signin "Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjM2ZlZWE1ODQ2N2ZmMmY5OGU5Yjk3ZiIsInJvbGUiOiJ1c2VyIiwidHlwZSI6InVzZXIiLCJpYXQiOjE1NDc2OTgzNjV9.ljQ818X7mh9fTbFQXvhA9fWRkK5OBINvCCIHZji9I-A"
+
+
+https://fl-18-auth.herokuapp.com/signup
+
+echo '{"username":"diddy","password":"kong"}' | http post https://fl-18-auth.herokuapp.com/signup
+
+
+echo '{"role":"user",       "capability":["read"]}' | http post :3000/config
+echo '{"role":"editor",     "capability":["create","read","update"]}' | http post :3000/config
+echo '{"role":"admin",      "capability":["create","read","update", "delete"]}' | http post :3000/config
+
+
+echo '{"role":"superuser",  "capability":["create","read","update", "delete"]}' | http post :3000/config
+

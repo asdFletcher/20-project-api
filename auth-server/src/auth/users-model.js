@@ -91,7 +91,7 @@ users.methods.generateToken = function(type) {
   
   let token = {
     id: this._id,
-    capabilities: this.acl.capabilities,
+    // capabilities: this.acl.capabilities,
     type: type || 'user',
   };
   
