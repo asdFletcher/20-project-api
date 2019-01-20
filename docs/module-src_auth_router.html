@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Global</title>
+    <title>JSDoc: Module: src/auth/router</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Global</h1>
+    <h1 class="page-title">Module: src/auth/router</h1>
 
     
 
@@ -28,7 +28,8 @@
 
 <header>
     
-        <h2></h2>
+        
+            
         
     
 </header>
@@ -37,8 +38,25 @@
     <div class="container-overview">
     
         
+            <div class="description">Auth router
+Provides routes for managing users</div>
+        
 
         
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <dl class="details">
@@ -68,6 +86,11 @@
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="auth_router.js.html">auth/router.js</a>, <a href="auth_router.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
 
     
 
@@ -75,6 +98,22 @@
 
     
 </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         
@@ -94,72 +133,6 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="mongoose"><span class="type-signature">(constant) </span>mongoose<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    Class representing a user.
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="auth_users-model.js.html">auth/users-model.js</a>, <a href="auth_users-model.js.html#line7">line 7</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -170,16 +143,13 @@
     
 
     
-    <h4 class="name" id="module:auth/middleware"><span class="type-signature"></span>module:auth/middleware<span class="signature">(capability, req, res, next)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="~handleAddRolesUsedtocreateroles.Wouldnormallyrequireauth"><span class="type-signature">(inner) </span>handleAddRoles
+Used to create roles. Would normally require auth<span class="signature">(req, res, next)</span><span class="type-signature"></span></h4>
     
 
     
 
 
-
-<div class="description">
-    Determines how a user is trying to authenticate and authenticates them accordingly
-</div>
 
 
 
@@ -210,29 +180,6 @@
     </thead>
 
     <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>capability</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">String representing capability</td>
-        </tr>
-
     
 
         <tr>
@@ -340,7 +287,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="auth_middleware.js.html">auth/middleware.js</a>, <a href="auth_middleware.js.html#line16">line 16</a>
+        <a href="auth_router.js.html">auth/router.js</a>, <a href="auth_router.js.html#line91">line 91</a>
     </li></ul></dd>
     
 
@@ -374,16 +321,13 @@
     
 
     
-    <h4 class="name" id="module:middleware/404"><span class="type-signature"></span>module:middleware/404<span class="signature">(req, res, next)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="~handleKeyhandlesuserkeygeneration"><span class="type-signature">(inner) </span>handleKey
+handles user key generation<span class="signature">(req, res, next)</span><span class="type-signature"></span></h4>
     
 
     
 
 
-
-<div class="description">
-    Sends a JSON Formatted 404 Response
-</div>
 
 
 
@@ -521,7 +465,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="middleware_404.js.html">middleware/404.js</a>, <a href="middleware_404.js.html#line13">line 13</a>
+        <a href="auth_router.js.html">auth/router.js</a>, <a href="auth_router.js.html#line75">line 75</a>
     </li></ul></dd>
     
 
@@ -555,16 +499,13 @@
     
 
     
-    <h4 class="name" id="module:middleware/500"><span class="type-signature"></span>module:middleware/500<span class="signature">(err, req, res, next)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="~handleOAuthhandlesuserOAuth"><span class="type-signature">(inner) </span>handleOAuth
+handles user OAuth<span class="signature">(req, res, next)</span><span class="type-signature"></span></h4>
     
 
     
 
 
-
-<div class="description">
-    Sends a JSON Formatted 404 Response
-</div>
 
 
 
@@ -595,29 +536,6 @@
     </thead>
 
     <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>err</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Error Text</td>
-        </tr>
-
     
 
         <tr>
@@ -725,7 +643,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="middleware_500.js.html">middleware/500.js</a>, <a href="middleware_500.js.html#line15">line 15</a>
+        <a href="auth_router.js.html">auth/router.js</a>, <a href="auth_router.js.html#line60">line 60</a>
     </li></ul></dd>
     
 
@@ -759,19 +677,13 @@
     
 
     
-    <h4 class="name" id="module:middleware/model-finder"><span class="type-signature"></span>module:middleware/model-finder<span class="signature">(req, res, next)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="~handleSigninhandlesusersignin"><span class="type-signature">(inner) </span>handleSignin
+handles user signin<span class="signature">(req, res, next)</span><span class="type-signature"></span></h4>
     
 
     
 
 
-
-<div class="description">
-    Model Finder Middleware
-Evaluates req.params.model (i.e. /api/v1/:model/) and returns an instance of the specified model.
-Because node require is cached, the instance will only be created once, no matter how many times a model is called for.
-In the event the model is not found, node will throw a "MODULE_NOT_FOUND" error which the error middleware in the server will pick up.
-</div>
 
 
 
@@ -909,7 +821,185 @@ In the event the model is not found, node will throw a "MODULE_NOT_FOUND" error 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="middleware_model-finder.js.html">middleware/model-finder.js</a>, <a href="middleware_model-finder.js.html#line16">line 16</a>
+        <a href="auth_router.js.html">auth/router.js</a>, <a href="auth_router.js.html#line48">line 48</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~handleSignuphandlesusersignup"><span class="type-signature">(inner) </span>handleSignup
+handles user signup<span class="signature">(req, res, next)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Express Request Object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Express Response Object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>next</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Express middleware next()</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="auth_router.js.html">auth/router.js</a>, <a href="auth_router.js.html#line25">line 25</a>
     </li></ul></dd>
     
 
