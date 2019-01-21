@@ -3,13 +3,13 @@
 
 ## Project Name
 
-### Author: Student/Group Name
+### Author: Jon and Fletcher
 
 ### Links and Resources
-* [repo](http://xyz.com)
+* [repo](https://github.com/asdFletcher/20-project-api)
 * [travis](http://xyz.com)
-* [back-end](http://xyz.com) (when applicable)
-* [front-end](http://xyz.com) (when applicable)
+* [back-end on heroku](https://api-with-authentication.herokuapp.com/)
+
 
 #### Documentation
 * [swagger](http://xyz.com) (API assignments only)
