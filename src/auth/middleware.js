@@ -15,10 +15,8 @@ const User = require('./users-model.js');
  */
 module.exports = (capability) => {
   return (req, res, next) => {
-    console.log(`user needs to have the following: ${capability}`);
     try {
       let [authType, authString] = req.headers.authorization.split(/\s+/);
-
       switch (authType.toLowerCase()) {
         case 'basic':
           return _authBasic(authString);
@@ -67,9 +65,6 @@ module.exports = (capability) => {
  * @param user {object} string representing the user
  */
     function _authenticate(user) {
-      console.log(`user needs: ${capability}`);
-      console.log(`user.can(capability) ${user.can(capability)}`);
-      console.log(`user.acl ${user.acl}`);
       if ( user && (!capability || (user.can(capability))) ) {
         req.user = user;
         req.token = user.generateToken();

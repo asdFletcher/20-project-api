@@ -8,24 +8,24 @@ echo '{"role":"admin",      "capabilities":["create","read","update", "delete"]}
 
 ~~~ new users with various roles
 echo '{"username":"john", "password":"johnny"}' | http post :3000/signup
-echo '{"username":"Bob", "password":"bobby", "role":"editor"}' | http post :3000/signup
+echo '{"username":"bob", "password":"bobby", "role":"editor"}' | http post :3000/signup
 echo '{"username":"admin", "password":"admin", "role":"admin"}' | http post :3000/signup
 
 ~~~ signin for various users
 http post :3000/signin -a john:johnny
-http post :3000/signin -a Bob:bobby
+http post :3000/signin -a bob:bobby
 http post :3000/signin -a admin:admin
 
 ~~~ bearer auth signin test
-http post :3000/signin "Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNDQzNGEyYzM3MjdhOWFkNTJiNDYxNCIsInR5cGUiOiJ1c2VyIiwiaWF0IjoxNTQ3OTczODY4LCJleHAiOjE1NDc5NzQxNjh9.UwkNJ0fnpis-vJahx56_bZDMa2LVDcQFdZ1dJBeKcc4"
+http post :3000/signin "Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNTEwNTc0YWM0NTM0ZTU4NjI2ZTI4ZSIsImNhcGFiaWxpdGllcyI6WyJjcmVhdGUiLCJyZWFkIiwidXBkYXRlIiwiZGVsZXRlIl0sInR5cGUiOiJ1c2VyIiwiaWF0IjoxNTQ4ODEzNjk0LCJleHAiOjE1NDg4MTM5OTR9.U9oUBGlv7vefQJ2bOA8QUy2LFLb6IMTFK8C1UJNrKrI"
 
 POST requests:
-echo '{"name":"Red Sox"}' | http post :3000/api/v1/teams -a Bob:bobby
-echo '{"name":"Yankees"}' | http post :3000/api/v1/teams -a Bob:bobby
-echo '{"name":"Mariners"}' | http post :3000/api/v1/teams -a Bob:bobby
+echo '{"name":"Red Sox"}' | http post :3000/api/v1/teams -a bob:bobby
+echo '{"name":"Yankees"}' | http post :3000/api/v1/teams -a bob:bobby
+echo '{"name":"Mariners"}' | http post :3000/api/v1/teams -a bob:bobby
 
 echo '{"bats":"R","name":"Joe Dimaggio","position":"C","team":"Red Sox","throws":"R"}' | http post :3000/api/v1/players -a john:johnny
-echo '{"bats":"L","name":"Ichiro Suzuki","position":"1B","team":"Mariners","throws":"R"}' | http post :3000/api/v1/players -a Bob:bobby
+echo '{"bats":"L","name":"Ichiro Suzuki","position":"1B","team":"Mariners","throws":"R"}' | http post :3000/api/v1/players -a bob:bobby
 echo '{"bats":"L","name":"Babe Ruth","position":"P","team":"Yankees","throws":"R"}' | http post :3000/api/v1/players -a admin:admin
 echo '{"bats":"R","name":"Cy Young","position":"2B","team":"Giants","throws":"R"}' | http post :3000/api/v1/players -a admin:admin
 
@@ -34,9 +34,9 @@ http :3000/api/v1/players
 http :3000/api/v1/teams
 
 DELETE requests:
-http delete :3000/api/v1/players/5c443c10d18de39d6fefad8f -a admin:admin
-http delete :3000/api/v1/players/5c443c0cd18de39d6fefad8e -a john:johnny
-http delete :3000/api/v1/players/5c443c0cd18de39d6fefad8e -a Bob:bobby
+http delete :3000/api/v1/players/5c5105cdac4534e58626e295 -a admin:admin
+http delete :3000/api/v1/players/5c5105cdac4534e58626e295 -a john:johnny
+http delete :3000/api/v1/players/5c5105cdac4534e58626e295 -a bob:bobby
 
 Mongo cheatsheet:
 https://github.com/codefellows/seattle-javascript-401d28/blob/master/reference/mongo-cheatsheet.md

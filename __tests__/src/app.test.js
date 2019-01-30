@@ -3,24 +3,37 @@
 const util = require('util');
 const rootDir = process.cwd();
 const supergoose = require('./supergoose.js');
-// const {server, start} = require(`${rootDir}/src/app.js`);
-const {server, start} = require(`/Users/fletcher/programming/codefellows/401/labs/20-project-api/src/app.js`);
-console.log({server});
+const app = require(`${rootDir}/src/app.js`);
+const User = require(`${rootDir}/src/auth/users-model.js`);
+const Role = require(`${rootDir}/src/auth/roles-model.js`);
+const server = app.app;
 const mockRequest = supergoose.server(server);
-
-console.log({rootDir});
-console.log('~~~~~~~~~~~~~~~~~~');
-console.log('~~~~~~~~~~~~~~~~~~');
-
 
 beforeAll(supergoose.startDB);
 afterAll(supergoose.stopDB);
 
+beforeAll(async () => {
+  let adminRole = {
+    role:'admin',
+    capabilities: ['create','read','update', 'delete']
+  };
+  let userRole = new Role(adminRole);
+  await userRole.save();
+
+  let adminUser = {
+    username:'admin',
+    password:'admin',
+    role:'admin',
+  }
+
+  let user = new User(adminUser);
+  await user.save();
+
+})
+
 describe('api server', () => {
 
   it('should respond with a 404 on an invalid route', () => {
-    console.log(`mockRequest.get: ${mockRequest}`);
-    console.log(`mockRequest.get: ${util.inspect(mockRequest.get)}`);
     return mockRequest
       .get('/foo')
       .then(results => {
@@ -51,10 +64,11 @@ describe('api server', () => {
 
   it('should be able to post to /api/v1/teams', () => {
 
-    let obj = {name:'test'};
+    let obj = {name:'Red Sox'}
 
     return mockRequest
       .post('/api/v1/teams')
+      .auth('admin', 'admin')
       .send(obj)
       .then(results => {
         expect(results.status).toBe(200);
@@ -69,6 +83,7 @@ describe('api server', () => {
 
     return mockRequest
       .post('/api/v1/players')
+      .auth('admin', 'admin')
       .send(obj)
       .then(results => {
         expect(results.status).toBe(200);
@@ -77,13 +92,13 @@ describe('api server', () => {
 
   });
 
-
   it('following a post to players, should find a single record', () => {
 
     let obj = {name:'John', bats:'R',throws:'R',position:'C',team:'Bunnies'};
 
     return mockRequest
       .post('/api/v1/players')
+      .auth('admin', 'admin')
       .send(obj)
       .then(results => {
         return mockRequest.get(`/api/v1/players/${results.body._id}`)
